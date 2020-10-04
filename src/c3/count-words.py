@@ -10,12 +10,12 @@ and to everyone knocking, it will be opened.
 # 単語を区切る --- (*1)
 text = text.replace(";", "")
 text = text.replace(",", "")
-text = text.replace(".", "")
-words = text.split()
+text = text.replace(".", "")  #print(text)すると、全部カンマなどがなくなってる。
+words = text.split() #.split()を用いることで、特定の区切り文字を指定して文字列を区切ってリスト型を得れる。区切り文字を省略すると空白文字を元に文字列を分割。
 
 # 単語を数える --- (*2)
 counter = {}
-for w in words:
+for w in words: #wordsはリストになってるからここで範囲を指定。
     ws = w.lower() # 小文字に変換
     if ws in counter:
         counter[ws] += 1

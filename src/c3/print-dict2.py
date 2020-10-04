@@ -8,4 +8,3 @@ for name, price in fruits.items(): # ---- (*1)
     # 画面に出力
     s = "{0}は、{1}円です。".format(name, price)
     print(s)
-
