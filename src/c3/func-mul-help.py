@@ -10,4 +10,3 @@ print(mul(10,20))
 
 # ヘルプを表示
 help(mul)
-
