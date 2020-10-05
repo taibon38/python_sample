@@ -17,4 +17,14 @@ result = func2(10, 5)
 print(result) # 表示結果→ 2.0
 
 
+def kakezan_k(a,b):
+    return a * a
 
+def warizan_w(c,d):
+    return c / d
+
+k = kakezan_k(2, 2)
+print(k)
+
+w = warizan_w(3,9)
+print(float(w))

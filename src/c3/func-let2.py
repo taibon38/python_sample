@@ -14,3 +14,10 @@ print(result) # 表示結果→ 15
 result = calc_5_3(add_func)
 print(result) # 表示結果→ 8
 
+def calc_10_3(func2):
+    return func2(10,3)
+result2 = calc_10_3(mul_func)
+print(result2)
+
+result2 = calc_10_3(add_func)
+print(result2)

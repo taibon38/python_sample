@@ -9,3 +9,4 @@ def print_jisho(**jisho):
     print(jisho)
 print_jisho(x = 10 , y = 88 , z =99)
 print_jisho(xx = "アイアンマン" , yy = "マイティ・ソー" )
+
