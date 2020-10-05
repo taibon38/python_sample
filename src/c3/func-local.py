@@ -8,3 +8,9 @@ def changeValue():
 
 changeValue()
 print("value=",value) # <--- はたしてこの値は？
+
+def changeValue2():
+    value2 = 20
+    print("value2=",value2)
+
+changeValue2()
