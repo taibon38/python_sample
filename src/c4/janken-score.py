@@ -22,7 +22,7 @@ while True:
     for i,desc in enumerate(hand):
         print(i, ":", desc)
     yt = input("出す手を数値で入力: ")
-    if yt == "q" or yt == "": quit()
+    if yt == "q" or yt == "":quit()  # 続けたいときはcontinue 
     you = int(yt)
     if you == 3: break
     if you < 0 or you > 2:

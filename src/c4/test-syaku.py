@@ -2,8 +2,8 @@
 import syaku
 
 # モジュールの関数を使う
-v = syaku.syaku_to_cm(10)
+v = syaku.syaku_to_cm(30)
 print("10尺=", v, "cm")
 
-v = syaku.syaku_to_cm(20)
+v = syaku.syaku_to_cm(40)
 print("20尺=", v, "cm")
