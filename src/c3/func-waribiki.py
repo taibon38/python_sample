@@ -22,7 +22,6 @@
 # calcValue("B", 14, 5, 2000)
 # calcValue("C", 15, 8, 5400)
 
-
 def calcValue(who,hour,count,value):
     info = "割引無し"
     if(hour == 14) and (count >= 3):

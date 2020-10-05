@@ -66,13 +66,11 @@ print(search)
 
 # x を2倍する無名関数
 x2 = lambda x : x * 2
-x2(2)
-print(x2)
+print(x2(10))
 
 # lambda練習（三角形の面積） lambda 引数：処理
 tri = lambda a,b:a*b/2
-tri(2,3)
-print(tri)
+print(int(tri(3,4)))
 
 # map() ※リストに対する処理
 nums = [1,3,5,7,9]
@@ -130,3 +128,6 @@ for name,speed in li:
     print(name,speed)
 
 
+# イテレータの確認
+i = iter(range(1,4))
+print(i)
