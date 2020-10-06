@@ -16,13 +16,13 @@ def mkpad(s, size):
 # 暗号化する --- (*4)
 def encrypt(password, data):
     # 特定の長さに調節する
-    password = mkpad(password, 16) # 16の倍数に揃える
+    password = mkpad(password, 16) # 16の倍数に揃える mkpad()は、データを特定のサイズの倍数に揃えるもの
     data = mkpad(data, 16)         # 16の倍数に揃える
-    password = password[:16]       # ちょうど16文字に揃える
+    password = password[:16]       # ちょうど16文字に揃える(スライス)
     # 暗号化
-    aes = AES.new(password, mode, iv)
-    data_cipher = aes.encrypt(data)
-    return base64.b64encode(data_cipher).decode("utf-8")
+    aes = AES.new(password, mode, iv) #AES暗号化オブジェクトを生成 
+    data_cipher = aes.encrypt(data) #データの暗号化
+    return base64.b64encode(data_cipher).decode("utf-8") #encode()で文字列をバイト列に変換し、復号化する際にdecode()でバイト列を文字列に変換
 
 # 復号化する --- (*5)
 def decrypt(password, encdata):

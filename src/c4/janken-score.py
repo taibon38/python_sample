@@ -18,9 +18,7 @@ while True:
         print("+--------------------------")
     # コンピューターの手を決定
     com = random.randint(0, 2)
-    # ユーザーの手を入力してもらう
-    for i,desc in enumerate(hand):
-        print(i, ":", desc)
+    # ユーザーの手を入力して45desc)
     yt = input("出す手を数値で入力: ")
     if yt == "q" or yt == "":quit()  # 続けたいときはcontinue 
     you = int(yt)

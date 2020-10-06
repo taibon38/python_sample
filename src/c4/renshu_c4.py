@@ -39,3 +39,32 @@
 # for x, y in enumerate(hand):
 #   print("{0}:{1}".format(x, y))
   
+# ------datetime------
+import datetime
+d = datetime.date.today()
+print(d)
+
+t = datetime.datetime.now()
+t.strftime("%Y/%m/%d %H:%M:%S")
+print(t)
+
+##特定の日付を指定する方法
+s = datetime.date(2020,10,8)
+print(s)
+## 変数に日付を代入
+## 1週間後を計算
+s_1week_after = s+datetime.timedelta(weeks=2)
+print(s_1week_after)
+
+## 3日前を計算
+s_3day_before = s-datetime.timedelta(days=3)
+print(s_3day_before)
+
+## 日付の差を計算
+a = datetime.date(2020,10,8)
+b = datetime.date(1992,10,8)
+c = a-b 
+print(c)
+
+s_sabun = s_1week_after - s_3day_before 
+print(s_sabun)

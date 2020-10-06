@@ -15,7 +15,6 @@ with open(filename, "w") as fp:
 # ファイルから読み込む
 with open(filename, "r") as fp:
     r = json.load(fp)
-    print("no=", r["no"])
+    print("no=", r["no"]) #.r は読み込
     print("code=", r["code"])
     print("scr=", r["scr"])
-
