@@ -68,3 +68,22 @@ print(c)
 
 s_sabun = s_1week_after - s_3day_before 
 print(s_sabun)
+
+# 正規表現
+import re #正規表現のモジュールを取り込む
+pat = r"\d+"  #raw stringの記述 \d は、任意の数値を取る。
+str = "This pen is yen300." #文字列
+a = re.search(pat,str) #正規表現検索
+print(a)
+
+import re
+pattern = r"\w+"  #raw stringの記述 \w は、任意の英数字を取る。
+str = "This pen is 100yen." #文字列
+b = re.search(pattern,str) #正規表現検索
+print(b)
+
+c = re.search(r"^abc$","abc") #^は先頭。　$は末尾。
+print(c)
+
+d = re.search(r"^abc$","abcd") #マッチしない例。Noneと結果が返ってくる。
+print(d)
