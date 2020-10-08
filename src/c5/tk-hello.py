@@ -4,11 +4,11 @@ import tkinter.messagebox as mb
 
 # ボタンが押された時の動作を関数として定義 --- (*2)
 def say_hello():
-    mb.showinfo("挨拶","おはようございます")
+    mb.showinfo("挨拶","おはようございます") #OKボタンがあるだけのダイアログ
 
 # メインウィンドウを作成 --- (*3)
 root = Tk()
-root.title('挨拶') # タイトルを設定
+root.title('挨拶') # メインウィンドウのタイトルを設定
 
 # ラベルを作成 --- (*4)
 desc_label = Label(text="以下のボタンを押してください")
