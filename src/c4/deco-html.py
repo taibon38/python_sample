@@ -7,6 +7,14 @@ def wrap_html(func):
         return s
     return wrapper
 
+def wrap_script(func):
+    def wrapper(*args, **kwargs):
+        s = "<script>"
+        s += func(*args, *kwargs)
+        s += "</script>"
+        return s
+    return wrapper
+
 def wrap_body(func):
     def wrapper(*args, **kwargs):
         s = "<body>"
@@ -17,6 +25,7 @@ def wrap_body(func):
 
 # デコレータを使ってみる
 @wrap_html
+@wrap_script
 @wrap_body
 def show_html(text):
     return text
