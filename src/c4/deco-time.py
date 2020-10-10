@@ -5,7 +5,7 @@ def time_log(func):
         # 前処理
         import datetime
         start = datetime.datetime.today()
-        print("--- start", func.__name__)
+        print("--- start", code)
         # 関数の実行
         result = func(*args, **kwargs)
         # 後処理

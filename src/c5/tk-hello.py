@@ -7,12 +7,12 @@ def say_hello():
     mb.showinfo("挨拶","おはようございます") #OKボタンがあるだけのダイアログ
 
 # メインウィンドウを作成 --- (*3)
-root = Tk()
+root = Tk() #rootは変数名なので決まりは特になし。
 root.title('挨拶') # メインウィンドウのタイトルを設定
 
 # ラベルを作成 --- (*4)
-desc_label = Label(text="以下のボタンを押してください")
-desc_label.pack()
+desc_label = Label(text="以下のボタンを押してください") # ラベル=Tkinterにおけるテキスト
+desc_label.pack() #pack()メソッドで、メインウィンドウ上に配置
 
 # 挨拶ボタンを作成 --- (*5)
 hello_button = Button(

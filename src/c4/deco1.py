@@ -1,6 +1,6 @@
 
 # デコレータの関数を定義
-def show_func_name(func):
+def show_func_name(func): 
     def wrapper(*args, **kwargs):
         print("--- start: " + func.__name__)
         res = func(*args, **kwargs)
