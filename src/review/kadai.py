@@ -118,7 +118,7 @@ while True:
 
     else :  #total <= person1.balance
         person1.balance = person1.balance - total
-        person1.items[item.name] = item.price #person1のitemsの辞書型に,item.nameとitem.priceを追加  →{'メロン':300}が表示されてしまう。。
+        person1.items[item.name] = user #Q.person1のitemsの辞書型に,ユーザーが入力したitem.nameを入力するには、、？
         print(person1.balance)
         # 残高確認用 → print("残りの残高は"+str(zangaku)+"円です")
     
