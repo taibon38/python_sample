@@ -58,7 +58,7 @@ user = int(input(item_select_question))
 for i, item in enumerate(items, 1):
     # ↓文字列の前にfを置くf-stringという書き方をしています
     item_select_question += f"{i}. {item.name} {item.price}\n"
-    print(item_select_question) #で、インデックス番号とname、priceが取得されることがわかる
+    #print(item_select_question) で、インデックス番号とname、priceが取得されることがわかる
 
 
 # 3.「ユーザーの回答によって処理を切り分ける」
