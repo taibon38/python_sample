@@ -7,7 +7,7 @@ class Person: #Personという型を作成
     def self_introduce(self): #Person型に紐付いた関数＝メソッド
         print("私の名前は"+self.name+"です")
         print("私の年齢は"+str(self.age)+"歳です")
-        # print("私の年齢は"+str(weight)+"kgです")　引数も取れる。体重とかはインスタンスにあったほうがわかりやすいので、あくまでもここは引数が取れるという例
+        # print("私の体重は"+str(weight)+"kgです")　引数も取れる。体重とかはインスタンスにあったほうがわかりやすいので、あくまでもここは引数が取れるという例
 
 person1 = Person("Sato",28)   #Personという型を利用しインスタンスをつくる。selfは値を指定しなくてよい。　selfは、person1というインスタンスを示している。
 print(type(person1)) #person1の型を調べる → Person型と表示。<class '__main__.Person'>)

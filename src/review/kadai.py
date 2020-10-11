@@ -6,6 +6,9 @@ class Item:
         self.name = name
         self.price = price
 
+    def name_price(self):
+        print("選択された商品："+self.name+":"+str(self.price)+"円")
+
 # ここに「人」を表すPersonクラスを定義してください。
 # Personクラスは、名前(name)、残高(balance)、保有商品(items)を属性として持つ設定をしてください。
 # 保有商品を表すitems属性は、「どの商品を何個購入したか」を管理できるようにしてください。辞書型を使って、キーを商品名、バリューを個数にすると良いと思います。ex.) {"Item1(チョコ)": 3, "Item2(アメ)": 1}
@@ -33,7 +36,6 @@ items = [item1, item2, item3]
 person1 = Person("佐藤",500,"")
 person2 = Person("高橋",700,"")
 
-
 # ここからは、説明文で要求されていることが実現できるように実装してください。
 # 関数を作ったり、クラス内にインスタンスメソッドを作ったりして実装してみてください。
 
@@ -53,35 +55,52 @@ person1.name_balance()
 # 3. ガム 130
 
 item_select_question = "どの商品を買いますか？番号で選択してください。購入処理を終了する場合は0を押してください。\n"
-user = int(input(item_select_question))
 
 for i, item in enumerate(items, 1):
     # ↓文字列の前にfを置くf-stringという書き方をしています
     item_select_question += f"{i}. {item.name} {item.price}\n"
     #print(item_select_question) で、インデックス番号とname、priceが取得されることがわかる
-
+user = int(input(item_select_question))
 
 # 3.「ユーザーの回答によって処理を切り分ける」
 # 「購入商品の質問」でユーザーが入力した値に応じて、以下の処理をしてください。
 # ユーザーが0を入力した場合 → 「購入処理を終了しました。」と出力する。「4.購入個数の確認」以降の処理はせずに⭐️に移る。
 # ユーザーが1〜3を入力した場合 → 「4.購入個数の確認」に移る。
 # ユーザーが4〜を入力した場合 → 「正しい値を入力してください。」と出力して、もう一度「1.ユーザー名と残高の表示」に戻る。
-if user == 0 :
-    print("購入処理を終了しました")
 
-elif 1 <= user <= 3 :
-    print("正しく入力できました")
-    count = input("何個買いますか？")
+while True:
+    if user == 0 :
+        print("購入処理を終了しました")
+        break
 
-else :
-    print("正しい値を入力してください")
+    elif user >= 4 :
+        print("正しい値を入力してください")
+        person1.name_balance()  
+        user = int(input(item_select_question))
+
+    else :
+        print("正しく入力できました")
+        break
 
 
 # 4.「購入個数の確認」
 # 以下のように、「3.購入商品の質問」でユーザーが選んだ商品名&値段と「何個買いますか?」を出力した上で、ユーザーから入力を受け取れるようにしてください。
 # コンソールに出力
 # 選択された商品: アメ: 80円。何個買いますか？
+if user == 1 :
+    item1.name_price() 
+    price = item1.price
+    count = int(input("何個買いますか？"))
 
+elif user == 2 :
+    item2.name_price()
+    price = item2.price
+    count = int(input("何個買いますか？"))
+
+elif user == 3 :
+    item3.name_price()
+    price = item3.price
+    count = int(input("何個買いますか？"))
 
 # 5.「決済処理」
 # ここまでで、ユーザーが選択した商品と個数から、トータルの金額が求められます。(アメ80円を2個買ったら、トータル金額は160円。)
@@ -89,8 +108,24 @@ else :
 # トータルの金額 <= ユーザー残高の場合 → 購入金額の分だけ、ユーザーの残高を減らしてください。ユーザーの「保有商品」に購入された商品と個数を追加してください。その上で、もう一度「ユーザー名と残高の表示」に戻ってください。
 # 「購入商品の質問」はユーザーが0を入力するまでずっと繰り返されます。
 
+while True:
+    total = price * count
+    # 合計確認用 → print("合計"+str(total)+"円です")
+    if input() == 0 :
+        break
+    elif total > person1.balance:
+        print("残高不足です。もう一度選択してください。") #Q.「1.ユーザー名と残高の表示」に戻るには、、？？？
+
+    else :  #total <= person1.balance
+        person1.balance = person1.balance - total
+        person1.items[item.name] = item.price #person1のitemsの辞書型に,item.nameとitem.priceを追加  →{'メロン':300}が表示されてしまう。。
+        print(person1.balance)
+        # 残高確認用 → print("残りの残高は"+str(zangaku)+"円です")
+    
 
 # ⭐️ person1について、1〜5までの処理が終わったら(ユーザーが0を入力したら)、person2についても同じ処理をしてください。person2でも処理が終わったら、「6.ステータスの表示」に移ってください。
+
+# person2.name_balance()
 
 
 # 6.「ステータスの表示」
