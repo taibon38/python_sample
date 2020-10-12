@@ -89,26 +89,19 @@ def shopping(self):
 # 選択された商品: アメ: 80円。何個買いますか？
         if user == 1 :
             item1.name_price() 
-            price1 = item1.price
-            count1 = int(input("何個買いますか？"))
-            count1 += count1
-            self.items.setdefault(item.i_name,count1)
+            price = item1.price
+            count = int(input("何個買いますか？"))
 
         elif user == 2 :
             item2.name_price()
-            price2 = item2.price
-            count2 = int(input("何個買いますか？"))
-            count2 += count2
-            self.items.setdefault(item.i_name,count2)
-            continue
+            price = item2.price
+            count = int(input("何個買いますか？"))
 
         elif user == 3 :
             item3.name_price()
-            price3 = item3.price
-            count3 = int(input("何個買いますか？"))
-            count3 += count3
-            self.items.setdefault(item.i_name,count3) 
-            continue
+            price = item3.price
+            count = int(input("何個買いますか？"))
+            
 
 # 5.「決済処理」
 # ここまでで、ユーザーが選択した商品と個数から、トータルの金額が求められます。(アメ80円を2個買ったら、トータル金額は160円。)
@@ -116,11 +109,8 @@ def shopping(self):
 # トータルの金額 <= ユーザー残高の場合 → 購入金額の分だけ、ユーザーの残高を減らしてください。ユーザーの「保有商品」に購入された商品と個数を追加してください。その上で、もう一度「ユーザー名と残高の表示」に戻ってください。
 # 「購入商品の質問」はユーザーが0を入力するまでずっと繰り返されます。
 
-        total_1 = price1*count1  
-        total_2 = price2*count2 
-        total_3 = price3*count3
-        total_all = total_1 + total_2 + total_3
-        # 合計確認用 → print("合計"+str(total_all)+"円です")
+        total = price *count  
+        # 合計確認用 → print("合計"+str(total)+"円です")
         if input() == 0 :
             break
         elif total > self.balance:
@@ -129,12 +119,8 @@ def shopping(self):
 
         else :  #total <= person1.balance
             self.balance = self.balance - total
-            # a = self.items.setdefault(item.i_name,count1)
-            # b = self.items.setdefault(item.i_name,count2)
-            # c = self.items.setdefault(item.i_name,count3) #上書きせずに、第一引数(キー)と第二引数(バリュー)を、self.itemsの辞書型に追加。
-            # print(a)
-            # print(b)
-            # print(c)
+            count += count
+            self.items.setdefault(item.i_name,count)#上書きせずに、第一引数(キー)と第二引数(バリュー)を、self.itemsの辞書型に追加。
             print(f"残額は{str(self.balance)}円です")
 
 shopping(person1)            
@@ -153,5 +139,4 @@ shopping(person2)
 
 print("--------ステータス---------")
 print(f"名前：{person1.p_name}, 残高:{str(person1.balance)}円, 保有商品:{person1.items}")
-
 print(f"名前：{person2.p_name}, 残高:{str(person2.balance)}円, 保有商品:{person2.items}")
