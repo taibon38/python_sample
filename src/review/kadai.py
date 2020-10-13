@@ -2,7 +2,7 @@
 # Itemクラスは、商品名(name)と値段(price)属性を持つ設定をしてください。
 
 class Item:
-    def __init__(self,i_name,price):
+    def __init__(self,i_name,price): #初期化処理
         self.i_name = i_name
         self.price = price
 
@@ -14,10 +14,18 @@ class Item:
 # 保有商品を表すitems属性は、「どの商品を何個購入したか」を管理できるようにしてください。辞書型を使って、キーを商品名、バリューを個数にすると良いと思います。ex.) {"Item1(チョコ)": 3, "Item2(アメ)": 1}
 
 class Person:
-    def __init__(self,p_name,balance,items):
+    def __init__(self,p_name,balance,items): #初期化処理
         self.p_name = p_name
         self.balance = balance
         self.items = {}
+
+    def count_item(self):
+        count = int(input("何個買いますか？"))
+        if item.i_name in self.items: #itemのキーが、items{}に存在する場合、True
+            self.items[item.i_name] = count #items{}にキーと値を設定。
+        else:  #キーが存在しな場合の処理。現在の値を取り出す→countを加算→再代入）
+            total_count =  self.items[item.i_name] + count 
+            self.items[self.i_name] = total_count
 
 # Itemクラスからインスタンスを3つ作って、それぞれ変数(item1〜3)に代入してください。
 # 属性(商品名、値段)に設定する値はなんでも構いません。
@@ -31,7 +39,7 @@ items = [item1, item2, item3]
 # Personクラスからインスタンスを2つ作って、それぞれ変数(person1, 2)に代入してください。
 # person1は500円の残高、person2は700円の残高を持つ設定にしてください。保有商品は1つもない設定にしてください。
 person1 = Person("佐藤",500,"")
-person2 = Person("高橋",700,"")
+person2 = Person("高橋",1000,"")
 
 # ここからは、説明文で要求されていることが実現できるように実装してください。
 # 関数を作ったり、クラス内にインスタンスメソッドを作ったりして実装してみてください。
@@ -91,16 +99,36 @@ def shopping(self):
             item1.name_price() 
             price = item1.price
             count = int(input("何個買いますか？"))
+            if item1.i_name in self.items: #キーが存在する場合の処理。現在の値を取り出す→countを加算→再代入）
+                total_count =  self.items[item1.i_name] + count 
+                self.items[item1.i_name] = total_count
+                # print(f"{item1.i_name}を{str(total_count)}個買いました。")
+            else:  #item1のキーが、items{}に存在しない場合の処理。
+                self.items[item1.i_name] = count #items{}にキーと値を設定
 
         elif user == 2 :
             item2.name_price()
             price = item2.price
             count = int(input("何個買いますか？"))
 
+            if item2.i_name in self.items:
+                total_count =  self.items[item1.i_name] + count 
+                self.items[item2.i_name] = total_count
+                # print(f"{item2.i_name}を{str(total_count)}個買いました。")
+            else: 
+                self.items[item2.i_name] = count 
+                
         elif user == 3 :
             item3.name_price()
             price = item3.price
             count = int(input("何個買いますか？"))
+
+            if item3.i_name in self.items:
+                total_count =  self.items[item3.i_name] + count 
+                self.items[item3.i_name] = total_count
+                # print(f"{item3.i_name}を{str(total_count)}個買いました。")
+            else: 
+                self.items[item3.i_name] = count 
             
 
 # 5.「決済処理」
@@ -119,8 +147,6 @@ def shopping(self):
 
         else :  #total <= person1.balance
             self.balance = self.balance - total
-            count += count
-            self.items.setdefault(item.i_name,count)#上書きせずに、第一引数(キー)と第二引数(バリュー)を、self.itemsの辞書型に追加。
             print(f"残額は{str(self.balance)}円です")
 
 shopping(person1)            
@@ -137,6 +163,29 @@ shopping(person2)
 # 名前: 山田, 残高: 120円, 保有商品: チョコ: 3個,アメ: 1個
 # 名前: 高橋, 残高: 700円, 保有商品: なし
 
+def person1_items():
+    if len(person1.items) != 0 :#person1.itemsに、キーが代入されていたらresultを表示
+        for name,count in person1.items.items():
+            result = str("{0}:{1}個 ".format(name,count))
+            print(result,end='')
+    else :
+        print("なし") #キーが代入されていない場合は「なし」と表示
+
+def person2_items():
+    if len(person2.items) != 0 :#person1.itemsに、キーが代入されていたらresultを表示
+        for name,count in person2.items.items():
+            result = str("{0}:{1}個 ".format(name,count))
+            print(result,end='')
+    else :
+        print("なし") #キーが代入されていない場合は「なし」と表示
+
+
 print("--------ステータス---------")
-print(f"名前：{person1.p_name}, 残高:{str(person1.balance)}円, 保有商品:{person1.items}")
-print(f"名前：{person2.p_name}, 残高:{str(person2.balance)}円, 保有商品:{person2.items}")
+print("名前："+person1.p_name+",残高:"+str(person1.balance)+"円,保有商品:",end='')
+person1_items()
+print("\n")
+
+print("名前："+person2.p_name+",残高:"+str(person2.balance)+"円,保有商品:",end='')
+person2_items()
+
+# - リストがゼロだったときの表示

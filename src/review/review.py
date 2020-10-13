@@ -42,6 +42,6 @@ r = 0
 for i in range(1,11):
     r = int(r + i)
     print("{0}を足すと{1}".format(i,r))
-    if r >= 40 :break
+    # if r >= 40 :break  breakで途中に条件を挟んで抜け出すことも可能
 print("1から10を足すと",r)
 
