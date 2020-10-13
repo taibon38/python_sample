@@ -23,7 +23,7 @@ class Person:
         count = int(input("何個買いますか？"))
         if item.i_name in self.items: #itemのキーが、items{}に存在する場合、True
             self.items[item.i_name] = count #items{}にキーと値を設定。
-        else:  #キーが存在しな場合の処理。現在の値を取り出す→countを加算→再代入）
+        else:  #キーが存在しない場合の処理。現在の値を取り出す→countを加算→再代入）
             total_count =  self.items[item.i_name] + count 
             self.items[self.i_name] = total_count
 
@@ -83,10 +83,8 @@ def shopping(self):
 
         elif user >= 4 :
             print("正しい値を入力してください")
-            # person1.name_balance()  
-            # user = int(input(item_select_question))
             continue 
-
+        
         else :
             print("正しく入力できました")
 
@@ -102,9 +100,10 @@ def shopping(self):
             if item1.i_name in self.items: #キーが存在する場合の処理。現在の値を取り出す→countを加算→再代入）
                 total_count =  self.items[item1.i_name] + count 
                 self.items[item1.i_name] = total_count
-                # print(f"{item1.i_name}を{str(total_count)}個買いました。")
+                print(f"{item1.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
             else:  #item1のキーが、items{}に存在しない場合の処理。
                 self.items[item1.i_name] = count #items{}にキーと値を設定
+                print(f"{item1.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")
 
         elif user == 2 :
             item2.name_price()
@@ -114,9 +113,10 @@ def shopping(self):
             if item2.i_name in self.items:
                 total_count =  self.items[item1.i_name] + count 
                 self.items[item2.i_name] = total_count
-                # print(f"{item2.i_name}を{str(total_count)}個買いました。")
+                print(f"{item2.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
             else: 
                 self.items[item2.i_name] = count 
+                print(f"{item2.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")
                 
         elif user == 3 :
             item3.name_price()
@@ -126,9 +126,10 @@ def shopping(self):
             if item3.i_name in self.items:
                 total_count =  self.items[item3.i_name] + count 
                 self.items[item3.i_name] = total_count
-                # print(f"{item3.i_name}を{str(total_count)}個買いました。")
+                print(f"{item3.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
             else: 
                 self.items[item3.i_name] = count 
+                print(f"{item3.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")
             
 
 # 5.「決済処理」
@@ -148,7 +149,7 @@ def shopping(self):
         else :  #total <= person1.balance
             self.balance = self.balance - total
             print(f"残額は{str(self.balance)}円です")
-
+            
 shopping(person1)            
 
 # ⭐️ person1について、1〜5までの処理が終わったら(ユーザーが0を入力したら)、person2についても同じ処理をしてください。person2でも処理が終わったら、「6.ステータスの表示」に移ってください。
@@ -169,7 +170,7 @@ def person1_items():
             result = str("{0}:{1}個 ".format(name,count))
             print(result,end='')
     else :
-        print("なし") #キーが代入されていない場合は「なし」と表示
+        print("なし",end='') #キーが代入されていない場合は「なし」と表示
 
 def person2_items():
     if len(person2.items) != 0 :#person1.itemsに、キーが代入されていたらresultを表示
@@ -177,7 +178,7 @@ def person2_items():
             result = str("{0}:{1}個 ".format(name,count))
             print(result,end='')
     else :
-        print("なし") #キーが代入されていない場合は「なし」と表示
+        print("なし",end='') #キーが代入されていない場合は「なし」と表示
 
 
 print("--------ステータス---------")
@@ -187,5 +188,3 @@ print("\n")
 
 print("名前："+person2.p_name+",残高:"+str(person2.balance)+"円,保有商品:",end='')
 person2_items()
-
-# - リストがゼロだったときの表示

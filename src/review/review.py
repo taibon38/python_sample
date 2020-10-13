@@ -38,10 +38,18 @@
 
 # for (範囲付きの繰り返し構文) 1から10まで足し算するプログラム
 
-r = 0
-for i in range(1,11):
-    r = int(r + i)
-    print("{0}を足すと{1}".format(i,r))
-    # if r >= 40 :break  breakで途中に条件を挟んで抜け出すことも可能
-print("1から10を足すと",r)
+# r = 0
+# for i in range(1,11):
+#     r = int(r + i)
+#     print("{0}を足すと{1}".format(i,r))
+#     # if r >= 40 :break  breakで途中に条件を挟んで抜け出すことも可能
+# print("1から10を足すと",r)
+
+
+# 名前を入力
+name= input("お名前は？ ")
+age = input("年齢は？")
+
+# 挨拶を表示
+print(name+"さん、こんにちは！"+age + "歳なんて、見えない！" )
 
