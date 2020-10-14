@@ -17,3 +17,7 @@ class Human:
     def eat(self):
         '''食物を食べる処理'''
         print(self.food+"を食べました")
+
+hito = Human() #インスタンス = クラス名()
+hito.take("Banana")
+hito.eat()

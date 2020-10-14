@@ -4,6 +4,7 @@ class HumanName:
     def setName(self, name):
         ''' 名前を設定するメソッド '''
         self.name = name
+        return self.name
     
     def getName(self):
         ''' 名前を取得するメソッド '''
@@ -14,8 +15,8 @@ taro = HumanName()
 taro.setName("Taro")
 print(taro.getName())
 
-jiro = HumanName()
-jiro.setName("Jiro")
-print(jiro.getName()) # --- (*1)
-print(jiro.name)      # --- (*2)
+# jiro = HumanName()
+# jiro.setName("Jiro")
+# print(jiro.getName()) # --- (*1)
+# print(jiro.name)      # --- (*2)
 

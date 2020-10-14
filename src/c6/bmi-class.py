@@ -4,10 +4,10 @@ class BMI:
         ''' 初期化 '''
         self.weight = weight
         self.height = height
-        self.calcBMI()
+        # self.calcBMI() #calcBMIの関数を実行
 
-    def calcBMI(self):
-        ''' BMIを計算する '''
+    # def calcBMI(self):
+    #     ''' BMIを計算する '''
         h = self.height / 100
         self.bmi = self.weight / (h ** 2)
 
@@ -22,7 +22,9 @@ class BMI:
         else: print("肥満(重)")
 
 # 一人目 
-person1 = BMI(weight=65, height=170)
+
+
+person1 = BMI(weight=65, height=170) #BMIクラスでperson1インスタンスを生成し、値を代入
 person1.printJudge()
 
 # 二人目
