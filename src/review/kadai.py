@@ -68,7 +68,7 @@ def shopping(self):
             # ↓文字列の前にfを置くf-stringという書き方をしています
             item_select_question += f"{i}. {item.i_name} {item.price}\n"
             #print(item_select_question) で、インデックス番号とname、priceが取得されることがわかる
-        user = int(input(item_select_question))
+        user = int(input(item_select_question))            
 
 # 3.「ユーザーの回答によって処理を切り分ける」1
 
@@ -77,14 +77,17 @@ def shopping(self):
 # ユーザーが1〜3を入力した場合 → 「4.購入個数の確認」に移る。
 # ユーザーが4〜を入力した場合 → 「正しい値を入力してください。」と出力して、もう一度「1.ユーザー名と残高の表示」に戻る。
 
-        if user == 0 :
+        if user == "":
+            continue
+
+        elif user == 0 :
             print("購入処理を終了しました")
             break
 
         elif user >= 4 :
             print("正しい値を入力してください")
             continue 
-        
+
         else :
             print("正しく入力できました")
 
@@ -101,6 +104,8 @@ def shopping(self):
                 total_count =  self.items[item1.i_name] + count 
                 self.items[item1.i_name] = total_count
                 print(f"{item1.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
+            elif count == "":
+                continue
             else:  #item1のキーが、items{}に存在しない場合の処理。
                 self.items[item1.i_name] = count #items{}にキーと値を設定
                 print(f"{item1.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")
@@ -114,6 +119,8 @@ def shopping(self):
                 total_count =  self.items[item1.i_name] + count 
                 self.items[item2.i_name] = total_count
                 print(f"{item2.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
+            elif count == "":
+                continue
             else: 
                 self.items[item2.i_name] = count 
                 print(f"{item2.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")
@@ -122,11 +129,12 @@ def shopping(self):
             item3.name_price()
             price = item3.price
             count = int(input("何個買いますか？"))
-
             if item3.i_name in self.items:
                 total_count =  self.items[item3.i_name] + count 
                 self.items[item3.i_name] = total_count
                 print(f"{item3.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
+            elif count == "":
+                continue
             else: 
                 self.items[item3.i_name] = count 
                 print(f"{item3.i_name}を{str(count)}個買いました。次へ進むにはEnterを入力してください。")

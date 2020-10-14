@@ -1,5 +1,5 @@
 balance = 500
-
+# 先生がつくった問題
 
 def shopping():
     """
