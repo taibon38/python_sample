@@ -116,7 +116,7 @@ def shopping(self):
             count = int(input("何個買いますか？"))
 
             if item2.i_name in self.items:
-                total_count =  self.items[item1.i_name] + count 
+                total_count =  self.items[Item2.i_name] + count 
                 self.items[item2.i_name] = total_count
                 print(f"{item2.i_name}を合計{str(total_count)}個買いました。次へ進むにはEnterを入力してください。")
             elif count == "":
