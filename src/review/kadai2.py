@@ -58,6 +58,7 @@ for i in scores: #scoresリストから、名前と得点を抽出
         total_score = i[2] + i[2]#同じ名前の得点を合算
         total["山田"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
 
+
     elif i[0] == "高橋":
         total_score = i[2] + i[2]#同じ名前の得点を合算
         total["高橋"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
