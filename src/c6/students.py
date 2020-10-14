@@ -56,7 +56,3 @@ print("平均点=", calc.ave())
 
 # print(type(p1))  →結果<class '__main__.Student'> Student型と表示。
 print(f"ID:{p1.id} \n氏名:{p1.name} \nスコア:{p1.score}") #値取得の練習。インスタンス名.プロパティ名で取得可能。　\nは改行
-
-
-
-
