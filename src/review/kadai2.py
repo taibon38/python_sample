@@ -87,13 +87,15 @@ for i in range(len(names)) : #namesの長さを取得し範囲を設定
 
 # Q6. 現在の日付の1週間前と1ヶ月前の日付を"YYYY-MM-DD"の形式で出力してください。今日が2020年8月1日の場合、"2020-07-25"と"2020-07-01"を出力してください。
 # ヒント: 月の計算にはpython-dateutilモジュールが使えます。
-# pip3 install python-dateutil でモジュールをインストール
+# pip3 install python-py でモジュールをインストール
 
-# import datetime 
-# from dateutil.relativedelta import relativedelta
-# datetime.datetime(today) 
+import datetime
+from dateutil.relativedelta import relativedelta
 
-
+one_week_ago = datetime.date.today() - relativedelta(weeks=1) #1週間前を算出
+one_month_ago = datetime.date.today()- relativedelta(months=1) #1ヶ月前を算出
+print(one_week_ago)
+print(one_month_ago)
 
 # Q7. 以下に定義したStudentクラスは、各生徒の名前と教科ごと(国語、算数、英語)の点数を管理するためのクラスです。
 # このクラスの中に、各生徒の平均点を出力するインスタンスメソッドを定義してください。
