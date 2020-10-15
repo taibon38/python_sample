@@ -126,3 +126,53 @@ print(f"{student2.name}さんの平均点は{str(student2.ave())}点です")
 # ヒント: APIを利用するにはrequestsモジュールを使います。
 
 postal_code = "0790177" # この郵便番号に対応する住所「北海道美唄市上美唄町協和」が出力結果となります。
+
+import json
+import sys
+import requests
+
+RECEST_URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={0}".format(postal_code)
+address = "" 
+response = requests.get(RECEST_URL)
+json_result = response.text #json文字列から辞書型へ変換
+json_to_dic_result = json.loads(response.text)
+# print(json_to_dic_result)
+
+if json_to_dic_result["message"] == None:
+    result_dic = json_to_dic_result["results"][0]
+else:
+    print("お探しの住所は見つかりませんでした(´・∀・｀)")
+    sys.exit()
+
+for i in range(1, 4):
+    address += result_dic["address" + str(i)]
+
+print(address)
+
+# # 以下はinputして呼び出す版
+#  #ハイフンありなしどちらでも入力可能
+# postal_code = input("郵便番号を入力してください(7桁)") #呼びだすAPI元のURL
+# RECEST_URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={0}".format(postal_code)
+#  #住所
+# address = "" #住所のカナ
+# kana = ""
+
+# response = requests.get(RECEST_URL)
+# json_result = response.text #json文字列から辞書型へ変換
+# json_to_dic_result = json.loads(response.text)
+#  #該当する情報の判定 
+# if json_to_dic_result["message"] == None:
+#     result_dic = json_to_dic_result["results"][0]
+# else:
+#     print("お探しの住所は見つかりませんでした(´・∀・｀)")
+#     sys.exit()
+
+# for i in range(1, 4):
+#     address += result_dic["address" + str(i)]
+#     kana += result_dic["kana" + str(i)]
+
+# context = {"郵便番号:": postal_code, "カナ:": kana, "住所:": address}
+
+# print("|-- {0:^10} --|".format("検索結果"))
+# for k, v in context.items():
+#     print(k, v)
