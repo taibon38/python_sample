@@ -20,8 +20,10 @@ for key ,value in meibo.items(): #for文と組み合わせることですべて�
     print(f"key:{key},values:{value}")
 
 print(meibo["tarou"]) #キーを指定で値を取得
+#{'age': 30, 'live': 'tokyo'}
 
 print(meibo["tarou"]["age"]) #tarouの中の辞書データから、ageキーを指定して値を取得
+#30
 
 print("―――――――――――――――――――")
 #すべてのageだけ取り出したい時の処理
@@ -43,5 +45,6 @@ meibo2 = {"tarou": {"age": 30, "live": "tokyo"},
 print(meibo2['rest'][1]) #rest 内の、キー1 を呼び出し
 #{'name': 'tai'}
 
-print(meibo2['rest'][1]['name']) #rest 内の、キー1 の valueを呼び出し
+print(meibo2['rest'][1]['name']) #rest 内の、インデックス1　nameに紐付いた valueを呼び出し
 #tai
+print(meibo2['rest'][0]["fullname"]) #rest 内の、インデックス0のnameに紐付いた valueを呼び出し

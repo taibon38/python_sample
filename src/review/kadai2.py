@@ -149,6 +149,22 @@ for i in range(1, 4):
 
 print(address)
 
+
+
+print("------別な書き方-------")
+
+import requests
+import pprint #リストや辞書を整形して出力、表示、文字列への変換などができるモジュール（https://note.nkmk.me/python-pprint-pretty-print/
+import json
+
+#郵便番号検索APIのURL
+url = "https://zipcloud.ibsnet.co.jp/api/search"
+
+#パラメータの設定
+params = {}
+params["keyid"] = '' #取得したアクセスキー
+params["results"]['address1'] = 
+
 # # 以下はinputして呼び出す版
 #  #ハイフンありなしどちらでも入力可能
 # postal_code = input("郵便番号を入力してください(7桁)") #呼びだすAPI元のURL
