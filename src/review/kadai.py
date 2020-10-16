@@ -59,7 +59,7 @@ def shopping(person): #パーソンのインスタンスが渡ってくるとい
         #print(item_select_question) で、インデックス番号とname、priceが取得されることがわかる
 
     while True:
-        print(f"{self.p_name}さん。あなたの残高は{str(self.balance)}円です") #ループの度に変わる可能性があるため、while文の中
+        print(f"{self.p_name}さん。あなたの残高は{str(self.balance)}円です") #ループの度に変わる可能性があるため、while文の中。fstring文の中では、strで定義しなくて良い。
         
 # 2.「購入商品の質問」
 # 以下の様に、質問文と選択肢(商品番号、商品名、値段)をコンソールに出力し、ユーザーから入力を受け取れるようにしてください。商品番号は1から連番で割り振られるようにしてください。
@@ -103,11 +103,7 @@ def shopping(person): #パーソンのインスタンスが渡ってくるとい
         item.name_price() 
         price = item.price
         count = int(input("何個買いますか？"))
-
-        # if user == 1 :
-        item.name_price() 
-        price = item.price
-        count = int(input("何個買いますか？"))
+        
         if item.i_name in self.items: #キーが存在する場合の処理。現在の値を取り出す→countを加算→再代入） 
             self.items[item.i_name] += count
             print(f"{item.i_name}を合計{str(self.items[item.i_name])}個買いました。次へ進むにはEnterを入力してください。")
