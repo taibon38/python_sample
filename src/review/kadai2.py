@@ -4,8 +4,18 @@
 list_even = list(range(2,31,2))
 print(list_even)
 
+list_even2 = []
+for i in range(1,31): #iに繰り返し1~30が代入される
+    if i % 2 == 0:
+        list_even2.append(i)
+print(list_even2)
+
+#内包表記 (for文やifが書ける) 処理も早い。
+[i+1 for i in range(1,31) if i % 2 == 0] 
+
 # Q2. アジアの国リスト、ヨーロッパの国リスト、各国の首都がわかる辞書があります。これらの情報から、アジアの首都リストとヨーロッパの首都リストを作成して出力するプログラムを書いてください。
 # (['東京', 'バンコク', 'ニューデリー']と['ローマ', 'アムステルダム', 'ベルリン']の2つのリストを作成、出力してください。要素の順番は気にしなくてOKです。)
+# レビュー：変数名は、意味のわかる長さで残すとよい。
 
 asian_countries = ["日本", "タイ", "インド"]
 european_countries = ["イタリア", "オランダ", "ドイツ"]
@@ -33,12 +43,18 @@ for i in range(len(european_countries)): #ヨーロッパの国名リストの�
     e.append(capitals[european_countries[i]]) #capitals辞書の中でアジア国名をキーとする値をリストaに追加
 print(e)
 
+#レビュー後
+for country in asian_countries: #asian_countriesをcountry順番に代入
+    a.append(capitals[country])
+print(a)
 
 # Q3. numbersリストから、数字の重複をなくした上で降順に並び替えたリストを作成し出力してください。([9, 8, 7, 4, 2]が出力結果となるプログラムを書いてください。)
 numbers = [4, 2, 8, 2, 2, 7, 9, 4, 4, 9, 9]
 unique = list(set(numbers)) #重複のないリストを作成
-list.sort(unique,reverse=True) #降順を指定
-print(unique)
+# list.sort(unique,reverse=True) #降順を指定  list.sortは、uniqueの値を上書きする
+
+sorted_unique =  sorted(unique,reverse=True) #uniqueをソートして変数に代入している。
+print(sorted_unique)
 
 # Q4. (名前、教科、得点)情報を保持するscoresリストがあります。名前ごとの総得点を集計して辞書として出力してください。
 # 期待する出力結果: {'山田': 155, '高橋': 110, '佐藤': 180}
@@ -52,22 +68,27 @@ scores = [
     ("佐藤", "数学", 80),
 ] #リストの要素がタプルなため、タプル名[インデックス]で値を取得できる。この場合はi=インデックス番号かつタプル名になる。　print(i[0],i[2])で発行可能
 
-total = {} #代入する空の辞書を作成
+from collections import defaultdict
+
+# total = {} #代入する空の辞書を作成
+total = defaultdict(int) #totalに空辞書が入り、バリューは0
+
 for i in scores: #scoresリストから、名前と得点を抽出
-    if i[0] == "山田":
-        total_score = i[2] + i[2]#同じ名前の得点を合算
-        total["山田"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
-
-
-    elif i[0] == "高橋":
-        total_score = i[2] + i[2]#同じ名前の得点を合算
-        total["高橋"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
-
-    elif i[0] == "佐藤":
-        total_score = i[2] + i[2]#同じ名前の得点を合算
-        total["佐藤"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値    
-
+    total[i[0]] += i[2] #山田が存在しなかったらデフォルトバリューの0に90を足す、存在したら、既存のバリューに新しい値を足す
 print(total) #辞書リストをprint
+
+    # if i[0] == "山田": 
+    #     total_score = i[2] + i[2]#同じ名前の得点を合算 
+    #     total["山田"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
+
+    # elif i[0] == "高橋":
+    #     total_score = i[2] + i[2]#同じ名前の得点を合算
+    #     total["高橋"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値
+
+    # elif i[0] == "佐藤":
+    #     total_score = i[2] + i[2]#同じ名前の得点を合算
+    #     total["佐藤"] = total_score #total辞書に、キー:値として、 名前:総得点として追加。辞書オブジェクト[キー]=値    
+
 
 
 # Q5. 名前リストがあります。それぞれの名前が"何人目か"がわかるようにして、順番に名前を出力してください。また、4人目以降の名前は出力しないでください。
@@ -84,6 +105,11 @@ for i in range(len(names)) : #namesの長さを取得し範囲を設定
         print(str(i+1)+"人目："+str(n)) #iのデフォルトが0のため、+1して1人目からスタート
     else:
         break  #4人目以降はループしない設定
+ 
+#レビュー
+for i,name in enumerate(names[:3],1): #iには1から番号が入る。nameには名前が入る  names[:3]は、3番目までをスライスしてくれる。[3:]だと、4番目以降を指定
+    print(f"{i}人目:{name}")
+
 
 # Q6. 現在の日付の1週間前と1ヶ月前の日付を"YYYY-MM-DD"の形式で出力してください。今日が2020年8月1日の場合、"2020-07-25"と"2020-07-01"を出力してください。
 # ヒント: 月の計算にはpython-dateutilモジュールが使えます。
@@ -94,8 +120,12 @@ from dateutil.relativedelta import relativedelta
 
 one_week_ago = datetime.date.today() - relativedelta(weeks=1) #1週間前を算出
 one_month_ago = datetime.date.today()- relativedelta(months=1) #1ヶ月前を算出
-print(one_week_ago)
-print(one_month_ago)
+
+print(one_week_ago.strftime("%Y年%m月%d日")) 
+print(one_month_ago.strftime("%Y年%m月%d日")) 
+
+# print(one_week_ago) #datetime型のオブジェクトが入っている。
+# print(one_month_ago)
 
 # Q7. 以下に定義したStudentクラスは、各生徒の名前と教科ごと(国語、算数、英語)の点数を管理するためのクラスです。
 # このクラスの中に、各生徒の平均点を出力するインスタンスメソッドを定義してください。
@@ -131,12 +161,12 @@ import json
 import sys
 import requests
 
-RECEST_URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={0}".format(postal_code)
+REQUEST_URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={0}".format(postal_code) #?以降は、リクエストパラメータ。検索機能とかに使われる。ユーザーの入力によって変わる可能性があるもの。
 address = "" 
-response = requests.get(RECEST_URL)
-json_result = response.text #json文字列から辞書型へ変換
-json_to_dic_result = json.loads(response.text)
-# print(json_to_dic_result)
+response = requests.get(REQUEST_URL) #getメソッドは、情報取得時に使うメソッド（HTTPは、通信規格）　postメソッドは、ユーザーからサーバー側に情報をおくる時に利用
+json_result = response.text 
+json_to_dic_result = json.loads(response.text) #json文字列から辞書型へ変換。ここに辞書が入っている。
+print(json_to_dic_result)
 
 if json_to_dic_result["message"] == None:
     result_dic = json_to_dic_result["results"][0]
@@ -151,19 +181,14 @@ print(address)
 
 
 
-print("------別な書き方-------")
+# print("------別な書き方-------")
 
-import requests
-import pprint #リストや辞書を整形して出力、表示、文字列への変換などができるモジュール（https://note.nkmk.me/python-pprint-pretty-print/
-import json
+# import requests
+# import pprint #リストや辞書を整形して出力、表示、文字列への変換などができるモジュール（https://note.nkmk.me/python-pprint-pretty-print/
+# import json
 
 #郵便番号検索APIのURL
-url = "https://zipcloud.ibsnet.co.jp/api/search"
-
-#パラメータの設定
-params = {}
-params["keyid"] = '' #取得したアクセスキー
-params["results"]['address1'] = 
+# url = "https://zipcloud.ibsnet.co.jp/api/search"
 
 # # 以下はinputして呼び出す版
 #  #ハイフンありなしどちらでも入力可能
